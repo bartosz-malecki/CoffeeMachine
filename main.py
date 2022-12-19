@@ -29,3 +29,11 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
+
+# TODO: 1. Print report of current resource values.
+# TODO: 2. Check resources sufficient to make drink order.
+# TODO: 3. Ask user what to do.
+# TODO: 4. Process coins.
+# TODO: 5. Check transaction successful.
+# TODO: 6. Make Coffee
+# TODO: 7. Turn off the Coffee Machine.
