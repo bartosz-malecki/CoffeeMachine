@@ -34,13 +34,12 @@ resources = {
 
 # TODO: 2. Check resources sufficient to make drink order.
 def is_resources_sufficient(order_ingredients):
+    """Returns True when order can be made, False if ingredients are insufficient."""
     for item in order_ingredients:
         if order_ingredients[item] > resources[item]:
+            print(f"Sorry there is not enough {item}.")
             return False
     return True
-
-
-#
 
 
 # TODO: 4. Process coins.
@@ -54,13 +53,27 @@ def insert_coins():
 
 
 # TODO: 5. Check if transaction is successful.
-def is_transaction_successful(cost_operation):
-    for item in cost_operation:
-        if cost_operation[item] > insert_coins:
-            print("no ok")
+def is_transaction_successful(money_received, drink_cost):
+    """Return True when the payment is accepted, or False if money is insufficient."""
+    if money_received >= drink_cost:
+        change = round(money_received - drink_cost, 2)
+        print(f"Here is ${change} dollars in change.")
+        global profit
+        profit += drink_cost
+        return True
+    else:
+        print("Sorry that's not enough money. Money refunded.")
+        return False
 
 
 # TODO: 6. Make Coffee
+def make_coffee(drink_name, order_ingredients):
+    """Deduct the required ingredients from the resources."""
+    for item in order_ingredients:
+        resources[item] -= order_ingredients[item]
+    print(f"Here is your {drink_name}. Enjoy!")
+
+
 turn_off = False
 
 while not turn_off:
@@ -77,5 +90,6 @@ while not turn_off:
         print(f"Coffee: {resources['coffee']}g")
         print(f"Money: ${profit}")
     else:
-        if choice == "espresso":
-            insert_coins()
+
+
+
