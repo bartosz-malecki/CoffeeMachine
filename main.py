@@ -90,6 +90,8 @@ while not turn_off:
         print(f"Coffee: {resources['coffee']}g")
         print(f"Money: ${profit}")
     else:
-
-
+        drink = MENU[choice]
+        if is_resources_sufficient(drink["ingredients"]):
+            if is_transaction_successful(insert_coins(), drink["cost"]):
+                make_coffee(choice, drink["ingredients"])
 
